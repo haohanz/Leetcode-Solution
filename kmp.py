@@ -1,5 +1,7 @@
 # leetcode 686 https://leetcode.com/problems/repeated-string-match/
-def build_arr(pattern):
+# Time: O(M+N)
+# Space: O(N)
+def build_arr(pattern): # O(N)
     arr = [0] * len(pattern)
     i = 1
     j = 0
@@ -19,7 +21,7 @@ def build_arr(pattern):
 def kmp(text, pattern):
     arr = build_arr(pattern)
     i, j = 0, 0
-    while i < len(text) and j < len(pattern):
+    while i < len(text) and j < len(pattern): # O(M)
         if text[i] == pattern[j]:
             i += 1
             j += 1
