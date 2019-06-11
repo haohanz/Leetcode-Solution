@@ -1,3 +1,4 @@
+# leetcode 686 https://leetcode.com/problems/repeated-string-match/
 def build_arr(pattern):
     arr = [0] * len(pattern)
     i = 1
