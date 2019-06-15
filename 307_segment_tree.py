@@ -4,6 +4,13 @@
 # Find Range: O(logn + k)
 # Space: O(n)
 
+# Also, you can use binary index tree: https://www.youtube.com/watch?v=v_wj_mOAlig
+# Add (Sum) - i -= i & -i = O(logn)
+# Build TreE: O(nlogn) -- can be reduced to O(n)
+# Update - i += i & -i
+# Update & range search: O(logn)
+# Sum range = Sum(i) - sum(j-1)
+
 class SegmentTreeNode(object):
     def __init__(self, left, right, val, left_node=None, right_node=None):
         self.start = left
