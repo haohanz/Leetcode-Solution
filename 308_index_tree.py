@@ -12,14 +12,14 @@ class NumMatrix(object):
         self.matrix = matrix
         m = len(matrix[0])
         n = len(matrix)
-        self._pref = [[0 for _ in xrange(m+1)] for x in xrange(n+1)]
+        pref = [[0 for _ in xrange(m+1)] for x in xrange(n+1)]
         for i in xrange(1, n+1):
             for j in xrange(1, m+1):
-                self._pref[i][j] = matrix[i-1][j-1] + self._pref[i-1][j] + self._pref[i][j-1] - self._pref[i-1][j-1]
+                pref[i][j] = matrix[i-1][j-1] + pref[i-1][j] + pref[i][j-1] - pref[i-1][j-1]
         self._bin = [[0 for _ in xrange(m+1)] for x in xrange(n+1)]
         for i in xrange(1, n+1):
             for j in xrange(1, m+1):
-                self._bin[i][j] = self._pref[i][j] + self._pref[i - (i & -i)][j - (j & -j)] - self._pref[i - (i & -i)][j] - self._pref[i][j - (j & -j)]
+                self._bin[i][j] = pref[i][j] + pref[i - (i & -i)][j - (j & -j)] - pref[i - (i & -i)][j] - pref[i][j - (j & -j)]
         self._m = m
         self._n = n
 
