@@ -6,7 +6,8 @@
 # Build time - O(N)
 # Update time - O(logn)
 # sumRange time - O(logn)
-
+# Cannot solve min/max task, because min(a, b) cannot be solved with min(min(a), min(b))
+# But can solve multiply, xor, max
 
 class NumArray(object):
     def build_tree(self):
