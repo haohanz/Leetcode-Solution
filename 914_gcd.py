@@ -5,10 +5,6 @@ class Solution(object):
         :type deck: List[int]
         :rtype: bool
         """
-        # if len(deck) < 2: return False
-        ### If x == 2:
-        # return not reduce(lambda x, y: x^y, deck)
-        ### If x >= 2:
         ### GCD
         # return reduce(fractions.gcd, collections.Counter(deck).values()) > 1
         def gcd(a, b):
@@ -17,3 +13,4 @@ class Solution(object):
             return a
         return reduce(gcd, collections.Counter(deck).values()) > 1
 
+# Related problem: https://leetcode.com/problems/water-and-jug-problem/
