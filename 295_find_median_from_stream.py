@@ -41,4 +41,5 @@ class MedianFinder(object):
 #   than the entire array. 
 #   Once you know the correct bucket, simply sort it find the median. 
 #   If the bucket size is significantly smaller than the size of input processed, 
-
+# 3. What if support Delete()?
+# - Use binary search tree
