@@ -16,10 +16,10 @@ class NumMatrix(object):
         for i in xrange(1, n+1):
             for j in xrange(1, m+1):
                 pref[i][j] = matrix[i-1][j-1] + pref[i-1][j] + pref[i][j-1] - pref[i-1][j-1]
-        self._bin = [[0 for _ in xrange(m+1)] for x in xrange(n+1)]
-        for i in xrange(1, n+1):
-            for j in xrange(1, m+1):
-                self._bin[i][j] = pref[i][j] + pref[i - (i & -i)][j - (j & -j)] - pref[i - (i & -i)][j] - pref[i][j - (j & -j)]
+        for j in xrange(m, 0, -1):
+            for i in xrange(n, 0, -1):
+                pref[i][j] = pref[i][j] + pref[i - (i & -i)][j - (j & -j)] - pref[i - (i & -i)][j] - pref[i][j - (j & -j)]
+        self._pref = pref
         self._m = m
         self._n = n
 
@@ -38,7 +38,7 @@ class NumMatrix(object):
         while curr_row <= self._n:
             curr_col = col
             while curr_col <= self._m:
-                self._bin[curr_row][curr_col] += diff
+                self._pref[curr_row][curr_col] += diff
                 curr_col += curr_col & -curr_col
             curr_row += curr_row & -curr_row
     
@@ -49,10 +49,10 @@ class NumMatrix(object):
         while curr_row > 0:
             curr_col = col
             while curr_col > 0:
-                ret += self._bin[curr_row][curr_col]
+                ret += self._pref[curr_row][curr_col]
                 curr_col -= curr_col & -curr_col
             curr_row -= curr_row & -curr_row
-        self._bin[curr_row][curr_col]
+        self._pref[curr_row][curr_col]
         return ret
             
 

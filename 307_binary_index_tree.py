@@ -11,12 +11,11 @@
 
 class NumArray(object):
     def build_tree(self):
-        D = [0] + self.nums
+        C = [0] + self.nums
         for i in xrange(len(self.nums)):
-            D[i+1] += D[i]
-        C = [0] * (len(self.nums) +  1)
-        for i in xrange(1, len(self.nums) + 1):
-            C[i] = D[i] - D[i - (i & -i)]
+            C[i+1] += C[i]
+        for i in xrange(len(self.nums), 0, -1):
+            C[i] -= C[i - (i & -i)]
         self.C = C
 
     def __init__(self, nums):
