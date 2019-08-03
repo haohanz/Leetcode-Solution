@@ -1,4 +1,8 @@
 #  https://leetcode.com/problems/regions-cut-by-slashes/
+# Solution 1 - Flood Fill
+# Time: O(n^2)
+# Space: O(n^2)
+# Can also solve with union find
 
 class Solution(object):
     def regionsBySlashes(self, grid):
