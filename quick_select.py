@@ -1,4 +1,5 @@
 # Select top k values from array
+# Time: T(n) = T(n) + T(n/2) + T(n/4) + ... + T(1) = O(n)
 class QuickSelect(object):
     def swap(self, arr, i, j):
         arr[i], arr[j] = arr[j], arr[i]
