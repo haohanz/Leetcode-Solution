@@ -6,7 +6,7 @@
 # Build time - O(N)
 # Update time - O(logn)
 # sumRange time - O(logn)
-# Cannot solve min/max task, because min(a, b) cannot be solved with min(min(a), min(b))
+# Cannot solve min/max task, because min(a, b) cannot be solved with min(a[i:j]) = sum(a[j]) - sum(a[i])
 # But can solve multiply, xor, max
 
 class NumArray(object):
