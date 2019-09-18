@@ -6,6 +6,7 @@
 #         self.right = None
 
 class Solution(object):
+    ### solution 1 - recursive
     def lowestCommonAncestor(self, root, p, q):
         """
         :type root: TreeNode
@@ -24,4 +25,30 @@ class Solution(object):
             return l or r or z
         dfs(root)
         return self.ret
+        
+    ### solution 2 - iterative
+    def lowestCommonAncestor(self, root, p, q):
+        """
+        :type root: TreeNode
+        :type p: TreeNode
+        :type q: TreeNode
+        :rtype: TreeNode
+        """
+        stack = [root]
+        parent = {root: None}
+        while stack and (not p in parent or not q in parent):
+            x = stack.pop()
+            if x.left:
+                parent[x.left] = x
+                stack.append(x.left)
+            if x.right:
+                parent[x.right] = x
+                stack.append(x.right)
+        parents = set()
+        while p:
+            parents.add(p)
+            p = parent[p]
+        while not q in parents:
+            q = parent[q]
+        return q
 
